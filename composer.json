@@ -4,5 +4,10 @@
     "license": "MIT",
     "require": {
         "abellion/xenus": "^0.17.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xenus\\Laravel\\": "src/"
+        }
     }
 }
