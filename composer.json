@@ -2,5 +2,7 @@
     "name": "abellion/xenus-laravel",
     "type": "library",
     "license": "MIT",
-    "require": {}
+    "require": {
+        "abellion/xenus": "^0.17.0"
+    }
 }
