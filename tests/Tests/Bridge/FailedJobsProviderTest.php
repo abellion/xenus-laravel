@@ -12,6 +12,21 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
 {
     use SetupFailedJobsTest;
 
+    public function test_failed_jobs_are_correctly_logged()
+    {
+        $provider = new FailedJobsProvider(
+            $collection = new FailedJobs($this->connection)
+        );
+
+        $provider->log(
+            'connection', 'queue', 'payload', 'exception'
+        );
+
+        $this->assertEquals(
+            1, $collection->count()
+        );
+    }
+
     public function test_failed_jobs_are_correctly_flushed()
     {
         $provider = new FailedJobsProvider(

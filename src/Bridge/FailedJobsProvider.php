@@ -5,6 +5,7 @@ namespace Xenus\Laravel\Bridge;
 use MongoDB\BSON\ObjectID;
 use Illuminate\Queue\Failed\FailedJobProviderInterface;
 
+use Xenus\Laravel\Support\FailedJobFactory;
 use Xenus\Laravel\Models\FailedJobs as Repository;
 
 class FailedJobsProvider implements FailedJobProviderInterface
@@ -28,7 +29,11 @@ class FailedJobsProvider implements FailedJobProviderInterface
      */
     public function log($connection, $queue, $payload, $exception)
     {
-        //
+        $this->repository->insertOne(
+            $document = FailedJobFactory::build($connection, $queue, $payload, $exception)
+        );
+
+        return $document['id'];
     }
 
     /**
