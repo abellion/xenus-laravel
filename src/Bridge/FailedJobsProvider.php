@@ -19,12 +19,12 @@ class FailedJobsProvider implements FailedJobProviderInterface
     /**
      * Log a failed job into storage
      *
-     * @param  string  $connection
-     * @param  string  $queue
-     * @param  string  $payload
-     * @param  \Exception  $exception
+     * @param  string     $connection
+     * @param  string     $queue
+     * @param  string     $payload
+     * @param  Exception  $exception
      *
-     * @return int|null
+     * @return string
      */
     public function log($connection, $queue, $payload, $exception)
     {
@@ -61,6 +61,7 @@ class FailedJobsProvider implements FailedJobProviderInterface
      * Delete a single failed job from storage
      *
      * @param  mixed  $id
+     *
      * @return bool
      */
     public function forget($id)
