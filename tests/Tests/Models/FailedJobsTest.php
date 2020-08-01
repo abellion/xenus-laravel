@@ -13,10 +13,16 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_collection_is_correctly_constructed()
     {
-        $collection = new FailedJobs($this->connection, 'failed-jobs');
+        $collection = new FailedJobs($this->connection, 'XXX');
 
         $this->assertEquals(
-            'failed-jobs', $collection->getCollectionName()
+            'XXX', $collection->getCollectionName()
+        );
+
+        $collection = new FailedJobs($this->connection);
+
+        $this->assertEquals(
+            'failed_jobs', $collection->getCollectionName()
         );
     }
 
@@ -30,6 +36,19 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(
             BSONDocument::class, $collection->findOne()
+        );
+    }
+
+    public function test_documents_are_castable_to_array()
+    {
+        $collection = new FailedJobs($this->connection);
+
+        $collection->insertOne([
+            'key' => 'val'
+        ]);
+
+        $this->assertArrayHasKey(
+            'key', (array) $collection->findOne()
         );
     }
 }
