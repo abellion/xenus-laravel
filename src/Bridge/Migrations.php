@@ -20,20 +20,6 @@ class Migrations implements MigrationRepositoryInterface
     }
 
     /**
-     * Get the completed migrations
-     *
-     * @return array
-     */
-    public function getRan()
-    {
-        $result = $this->repository->find([], [
-            'sort' => ['batch' => 1]
-        ]);
-
-        return Arr::pluck($result, 'migration');
-    }
-
-    /**
      * Get list of migrations
      *
      * @param  int  $steps
@@ -47,6 +33,20 @@ class Migrations implements MigrationRepositoryInterface
         ]);
 
         return iterator_to_array($result);
+    }
+
+    /**
+     * Get the completed migrations
+     *
+     * @return array
+     */
+    public function getRan()
+    {
+        $result = $this->repository->find([], [
+            'sort' => ['batch' => 1]
+        ]);
+
+        return Arr::pluck($result, 'migration');
     }
 
     /**
