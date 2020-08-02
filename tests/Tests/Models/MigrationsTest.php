@@ -2,16 +2,16 @@
 
 namespace Xenus\Laravel\Tests\Tests\Models;
 
-use Xenus\Laravel\Models\FailedJobs;
-use Xenus\Laravel\Tests\Support\SetupFailedJobsTest;
+use Xenus\Laravel\Models\Migrations;
+use Xenus\Laravel\Tests\Support\SetupMigrationsTest;
 
-class FailedJobsTest extends \PHPUnit\Framework\TestCase
+class MigrationsTest extends \PHPUnit\Framework\TestCase
 {
-    use SetupFailedJobsTest;
+    use SetupMigrationsTest;
 
     public function test_documents_are_castable_to_array()
     {
-        $collection = new FailedJobs($this->connection);
+        $collection = new Migrations($this->connection);
 
         $collection->insertOne([
             'key' => 'val'
