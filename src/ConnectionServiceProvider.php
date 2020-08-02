@@ -15,14 +15,14 @@ class ConnectionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $config = $this->app->config->get('database.connections.mongodb');
+        $connection = $this->app->config->get('database.mongodb.connection');
 
-        if ($config === null) {
+        if ($connection === null) {
             return ;
         }
 
-        $this->app->singleton(Connection::class, function () use ($config) {
-            return new Connection($config['host'], $config['database'], $config['options'] ?? []);
+        $this->app->singleton(Connection::class, function () use ($connection) {
+            return new Connection($connection['host'], $connection['database'], $connection['options'] ?? []);
         });
     }
 }

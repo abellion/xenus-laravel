@@ -13,7 +13,7 @@ class ConnectionServiceProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_connection_is_correctly_registered()
     {
-        $this->container->config->set('database.connections.mongodb', [
+        $this->container->config->set('database.mongodb.connection', [
             'host' => 'mongodb://xxx', 'database' => 'xxx'
         ]);
 
