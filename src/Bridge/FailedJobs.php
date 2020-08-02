@@ -30,7 +30,7 @@ class FailedJobs implements FailedJobProviderInterface
     public function log($connection, $queue, $payload, $exception)
     {
         $this->repository->insertOne(
-            $document = FailedJobFactory::build($connection, $queue, $payload, $exception)
+            $document = FailedJobFactory::create($connection, $queue, $payload, $exception)
         );
 
         return $document['id'];

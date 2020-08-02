@@ -17,7 +17,7 @@ class FailedJobFactory
      *
      * @return array
      */
-    public static function build($connection, $queue, $payload, $exception)
+    public static function create($connection, $queue, $payload, $exception)
     {
         $document = [];
 

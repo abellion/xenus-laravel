@@ -8,7 +8,7 @@ class FailedJobFactoryTest extends \PHPUnit\Framework\TestCase
 {
     public function test_failed_job_document_contains_all_the_necessary_fields()
     {
-        $document = FailedJobFactory::build('connection', 'queue', 'payload', new \Exception());
+        $document = FailedJobFactory::create('connection', 'queue', 'payload', new \Exception());
 
         $this->assertArrayHasKey(
             'id', $document
