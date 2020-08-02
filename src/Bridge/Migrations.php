@@ -2,13 +2,22 @@
 
 namespace Xenus\Laravel\Bridge;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 
 use Xenus\Laravel\Support\MigrationsSetup;
+use Xenus\Laravel\Models\Migrations as Repository;
 
 class Migrations implements MigrationRepositoryInterface
 {
     use MigrationsSetup;
+
+    private $repository;
+
+    public function __construct(Repository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * Get the completed migrations
@@ -17,7 +26,11 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function getRan()
     {
+        $result = $this->repository->find([], [
+            'sort' => ['batch' => 1]
+        ]);
 
+        return Arr::pluck($result, 'migration');
     }
 
     /**
@@ -29,7 +42,11 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function getMigrations($steps)
     {
+        $result = $this->repository->find(['batch' => ['$gte' => 1]], [
+            'sort' => ['batch' => -1], 'limit' => $steps
+        ]);
 
+        return iterator_to_array($result);
     }
 
     /**
@@ -39,7 +56,11 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function getLast()
     {
+        $result = $this->repository->find([
+            'batch' => $this->getNextBatchNumber() - 1
+        ]);
 
+        return iterator_to_array($result);
     }
 
     /**
@@ -49,7 +70,11 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function getMigrationBatches()
     {
+        $result = $this->repository->find([], [
+            'sort' => ['batch' => 1]
+        ]);
 
+        return Arr::pluck($result, 'batch', 'migration');
     }
 
     /**
@@ -62,7 +87,9 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function log($file, $batch)
     {
-
+        $this->repository->insertOne([
+            'migration' => $file, 'batch' => $batch
+        ]);
     }
 
     /**
@@ -74,7 +101,9 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function delete($migration)
     {
-
+        $this->repository->deleteOne(
+            $migration['_id']
+        );
     }
 
     /**
@@ -84,6 +113,10 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function getNextBatchNumber()
     {
+        $result = $this->repository->findOne([], [
+            'sort' => ['batch' => -1]
+        ]);
 
+        return ($result) ? $result['batch'] + 1 : 1;
     }
 }
