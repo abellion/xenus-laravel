@@ -4,7 +4,7 @@ namespace Xenus\Laravel\Tests\Support;
 
 trait SetupConnectionProviderTest
 {
-    use SetupApplication, SetupTestsHooks;
+    use SetupTestsHooks, SetupApplication;
 
     private $setup = [
         'createApplication'
