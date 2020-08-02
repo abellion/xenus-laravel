@@ -4,8 +4,6 @@ namespace Xenus\Laravel\Tests\Support;
 
 use Xenus\Connection;
 
-use Illuminate\Queue\Failed\NullFailedJobProvider;
-
 trait SetupFailedJobsProviderTest
 {
     use SetupTestsHooks, SetupApplication;
@@ -27,14 +25,14 @@ trait SetupFailedJobsProviderTest
     }
 
     /**
-     * Register the queue failed
+     * Register the queue failer
      *
      * @return void
      */
     private function registerQueueFailer()
     {
         $this->container->singleton('queue.failer', function () {
-            return new NullFailedJobProvider();
+            return null;
         });
     }
 }
