@@ -10,7 +10,7 @@ class FailedJobsServiceProviderTest extends \PHPUnit\Framework\TestCase
 {
     use SetupFailedJobsProviderTest;
 
-    public function test_failed_jobs_collection_is_correctly_registered()
+    public function test_failed_jobs_repository_is_correctly_registered()
     {
         (new FailedJobsServiceProvider($this->container))->register();
 

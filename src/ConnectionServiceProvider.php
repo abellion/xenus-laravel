@@ -15,7 +15,7 @@ class ConnectionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $config = $this->app->config->get('xenus.connection');
+        $config = $this->app->config->get('database.connections.mongodb');
 
         if ($config === null) {
             return ;

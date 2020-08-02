@@ -13,7 +13,7 @@ class ConnectionServiceProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_connection_is_correctly_registered()
     {
-        $this->container->config->set('xenus.connection', [
+        $this->container->config->set('database.connections.mongodb', [
             'host' => 'mongodb://xxx', 'database' => 'xxx'
         ]);
 
