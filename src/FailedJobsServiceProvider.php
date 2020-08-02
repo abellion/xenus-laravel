@@ -12,7 +12,7 @@ use Xenus\Laravel\Bridge\FailedJobs as FailedJobsRepository;
 class FailedJobsServiceProvider extends ServiceProvider
 {
     /**
-     * Register the failed jobs collection
+     * Register the failed jobs repository
      *
      * @return void
      */
