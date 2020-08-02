@@ -2,7 +2,7 @@
 
 namespace Xenus\Laravel\Tests\Support;
 
-trait SetupConnectionTest
+trait SetupConnectionProviderTest
 {
     use SetupApplication, SetupTestsHooks;
 

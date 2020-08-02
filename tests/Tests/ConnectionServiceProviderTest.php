@@ -3,13 +3,13 @@
 namespace Xenus\Laravel\Tests\Tests;
 
 use Xenus\Laravel\ConnectionServiceProvider;
-use Xenus\Laravel\Tests\Support\SetupConnectionTest;
+use Xenus\Laravel\Tests\Support\SetupConnectionProviderTest;
 
 use Xenus\Connection;
 
 class ConnectionServiceProviderTest extends \PHPUnit\Framework\TestCase
 {
-    use SetupConnectionTest;
+    use SetupConnectionProviderTest;
 
     public function test_connection_is_correctly_registered()
     {
