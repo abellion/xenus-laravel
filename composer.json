@@ -13,7 +13,8 @@
     "require-dev": {
         "illuminate/container": "^5.8 || ^6.0 || ^7.0",
         "phpunit/phpunit": "^7.5",
-        "illuminate/config": "^5.8 || ^6.0 || ^7.0"
+        "illuminate/config": "^5.8 || ^6.0 || ^7.0",
+        "illuminate/events": "^5.8 || ^6.0 || ^7.0"
     },
     "autoload": {
         "psr-4": {
