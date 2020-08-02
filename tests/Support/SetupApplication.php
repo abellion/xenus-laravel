@@ -5,8 +5,6 @@ namespace Xenus\Laravel\Tests\Support;
 use Illuminate\Container\Container;
 use Illuminate\Config\Repository as Config;
 
-use Illuminate\Contracts\Config\Repository as ConfigContract;
-
 trait SetupApplication
 {
     private $container;
@@ -22,10 +20,6 @@ trait SetupApplication
 
         $this->container->instance(
             'config', new Config()
-        );
-
-        $this->container->alias(
-            'config', ConfigContract::class
         );
     }
 }
