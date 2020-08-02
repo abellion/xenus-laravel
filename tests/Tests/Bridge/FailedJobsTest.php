@@ -2,8 +2,9 @@
 
 namespace Xenus\Laravel\Tests\Tests\Bridge;
 
-use Xenus\Laravel\Bridge\FailedJobs;
 use Xenus\Laravel\Models\FailedJobs as FailedJobsModel;
+use Xenus\Laravel\Bridge\FailedJobs as FailedJobsRepository;
+
 use Xenus\Laravel\Tests\Support\SetupFailedJobsTest;
 
 use MongoDB\BSON\ObjectID;
@@ -14,11 +15,11 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_logged()
     {
-        $provider = new FailedJobs(
+        $repository = new FailedJobsRepository(
             $collection = new FailedJobsModel($this->connection)
         );
 
-        $provider->log(
+        $repository->log(
             'connection', 'queue', 'payload', 'exception'
         );
 
@@ -29,7 +30,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_flushed()
     {
-        $provider = new FailedJobs(
+        $repository = new FailedJobsRepository(
             $collection = new FailedJobsModel($this->connection)
         );
 
@@ -41,7 +42,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
             1, $collection->count()
         );
 
-        $provider->flush();
+        $repository->flush();
 
         $this->assertEquals(
             0, $collection->count()
@@ -50,7 +51,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_forgotten()
     {
-        $provider = new FailedJobs(
+        $repository = new FailedJobsRepository(
             $collection = new FailedJobsModel($this->connection)
         );
 
@@ -62,7 +63,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
             1, $collection->count()
         );
 
-        $provider->forget(
+        $repository->forget(
             new ObjectID()
         );
 
@@ -70,7 +71,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
             1, $collection->count()
         );
 
-        $provider->forget(
+        $repository->forget(
             $id
         );
 
@@ -81,7 +82,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_all_failed_jobs_are_correctly_retrieved()
     {
-        $provider = new FailedJobs(
+        $repository = new FailedJobsRepository(
             $collection = new FailedJobsModel($this->connection)
         );
 
@@ -89,7 +90,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
             '_id' => $id = new ObjectID()
         ]);
 
-        $items = $provider->all();
+        $items = $repository->all();
 
         $this->assertIsArray(
             $items
@@ -102,7 +103,7 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_found()
     {
-        $provider = new FailedJobs(
+        $repository = new FailedJobsRepository(
             $collection = new FailedJobsModel($this->connection)
         );
 
@@ -111,11 +112,11 @@ class FailedJobsTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertNotNull(
-            $provider->find((string) $id)
+            $repository->find((string) $id)
         );
 
         $this->assertNull(
-            $provider->find((string) new ObjectID())
+            $repository->find((string) new ObjectID())
         );
     }
 }
