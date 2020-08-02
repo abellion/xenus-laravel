@@ -3,7 +3,6 @@
 namespace Xenus\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Config\Repository as Config;
 
 use Xenus\Connection;
 
@@ -16,7 +15,7 @@ class ConnectionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $config = $this->app->make(Config::class)->get('xenus.connection');
+        $config = $this->app->config->get('xenus.connection');
 
         if ($config === null) {
             return ;
