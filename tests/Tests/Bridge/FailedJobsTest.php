@@ -2,20 +2,20 @@
 
 namespace Xenus\Laravel\Tests\Tests\Bridge;
 
-use Xenus\Laravel\Models\FailedJobs;
-use Xenus\Laravel\Bridge\FailedJobsProvider;
+use Xenus\Laravel\Bridge\FailedJobs;
+use Xenus\Laravel\Models\FailedJobs as FailedJobsModel;
 use Xenus\Laravel\Tests\Support\SetupFailedJobsTest;
 
 use MongoDB\BSON\ObjectID;
 
-class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
+class FailedJobsTest extends \PHPUnit\Framework\TestCase
 {
     use SetupFailedJobsTest;
 
     public function test_failed_jobs_are_correctly_logged()
     {
-        $provider = new FailedJobsProvider(
-            $collection = new FailedJobs($this->connection)
+        $provider = new FailedJobs(
+            $collection = new FailedJobsModel($this->connection)
         );
 
         $provider->log(
@@ -29,8 +29,8 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_flushed()
     {
-        $provider = new FailedJobsProvider(
-            $collection = new FailedJobs($this->connection)
+        $provider = new FailedJobs(
+            $collection = new FailedJobsModel($this->connection)
         );
 
         $collection->insertOne([
@@ -50,8 +50,8 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_forgotten()
     {
-        $provider = new FailedJobsProvider(
-            $collection = new FailedJobs($this->connection)
+        $provider = new FailedJobs(
+            $collection = new FailedJobsModel($this->connection)
         );
 
         $collection->insertOne([
@@ -81,8 +81,8 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_all_failed_jobs_are_correctly_retrieved()
     {
-        $provider = new FailedJobsProvider(
-            $collection = new FailedJobs($this->connection)
+        $provider = new FailedJobs(
+            $collection = new FailedJobsModel($this->connection)
         );
 
         $collection->insertOne([
@@ -102,8 +102,8 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
 
     public function test_failed_jobs_are_correctly_found()
     {
-        $provider = new FailedJobsProvider(
-            $collection = new FailedJobs($this->connection)
+        $provider = new FailedJobs(
+            $collection = new FailedJobsModel($this->connection)
         );
 
         $collection->insertOne([
