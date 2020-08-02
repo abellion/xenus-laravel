@@ -6,7 +6,7 @@ use Illuminate\Events\Dispatcher;
 
 class EventDispatcherMock extends Dispatcher
 {
-    private $dispatched = [];
+    public $dispatched = [];
 
     /**
      * Dispatch the given event
@@ -19,6 +19,6 @@ class EventDispatcherMock extends Dispatcher
      */
     public function dispatch($event, $payload = [], $halt = false)
     {
-        $this->dispatched[] = $event;
+        $this->dispatched[] = (is_object($event)) ? get_class($event) : $event;
     }
 }
