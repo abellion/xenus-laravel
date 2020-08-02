@@ -4,8 +4,12 @@ namespace Xenus\Laravel\Bridge;
 
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 
+use Xenus\Laravel\Support\MigrationsSetup;
+
 class Migrations implements MigrationRepositoryInterface
 {
+    use MigrationsSetup;
+
     /**
      * Get the completed migrations
      *
@@ -79,38 +83,6 @@ class Migrations implements MigrationRepositoryInterface
      * @return int
      */
     public function getNextBatchNumber()
-    {
-
-    }
-
-    /**
-     * Create the migration repository data store
-     *
-     * @return void
-     */
-    public function createRepository()
-    {
-
-    }
-
-    /**
-     * Determine if the migration repository exists
-     *
-     * @return bool
-     */
-    public function repositoryExists()
-    {
-
-    }
-
-    /**
-     * Set the information source to gather data
-     *
-     * @param  string  $name
-     *
-     * @return void
-     */
-    public function setSource($name)
     {
 
     }
