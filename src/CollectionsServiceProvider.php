@@ -25,10 +25,26 @@ class CollectionsServiceProvider extends ServiceProvider
         $extender = new CollectionExtender($this->app);
 
         foreach ($this->collections as $collection) {
-            $this->app->extend(
+            $this->bind($collection)->extend(
                 $collection, Closure::fromCallable([$extender, 'extend'])
             );
         }
+    }
+
+    /**
+     * Bind the given collection to the service container
+     *
+     * @param  string $collection
+     *
+     * @return object
+     */
+    protected function bind(string $collection)
+    {
+        if (getenv('APP_ENV') !== 'testing') {
+            $this->app->singleton($collection);
+        }
+
+        return $this->app;
     }
 
     /**
