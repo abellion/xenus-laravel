@@ -32,7 +32,7 @@ class XenusServiceProvider extends ServiceProvider
         );
 
         $this->app->register(
-            new CollectionsServiceProvider($this->app)->setCollections($this->collections)
+            (new CollectionsServiceProvider($this->app))->setCollections($this->collections)
         );
     }
 }
