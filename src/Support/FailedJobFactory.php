@@ -26,10 +26,6 @@ class FailedJobFactory
         );
 
         Arr::set(
-            $document, 'id', (string) $document['_id']
-        );
-
-        Arr::set(
             $document, 'connection', $connection
         );
 
@@ -47,6 +43,10 @@ class FailedJobFactory
 
         Arr::set(
             $document, 'failed_at', time()
+        );
+
+        Arr::set(
+            $document, 'id', (string) $document['_id']
         );
 
         return $document;
