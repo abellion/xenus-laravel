@@ -1,11 +1,19 @@
 <?php
 
-namespace Xenus\Laravel\Tests\Mocks;
+namespace Xenus\Laravel\Tests\Stubs;
 
+use Xenus\Connection;
 use Xenus\Collection;
 
-class CollectionMock extends Collection
+class DummyCollection extends Collection
 {
+    public function __construct()
+    {
+        parent::__construct(
+            new Connection('mongodb://xxx', 'xxx'), ['name' => 'xxx']
+        );
+    }
+
     /**
      * Get the event dispatcher
      *

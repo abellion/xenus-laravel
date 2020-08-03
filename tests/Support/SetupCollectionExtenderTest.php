@@ -2,8 +2,7 @@
 
 namespace Xenus\Laravel\Tests\Support;
 
-use Xenus\Connection;
-use Xenus\Laravel\Tests\Mocks\CollectionMock;
+use Xenus\Laravel\Tests\Stubs\DummyCollection;
 
 use Illuminate\Events\Dispatcher as EventDispatcher;
 use Illuminate\Contracts\Container\Container as ContainerContract;
@@ -26,9 +25,7 @@ trait SetupCollectionExtenderTest
      */
     private function registerEventDispatcher()
     {
-        $this->container->instance(
-            EventDispatcherContract::class, new EventDispatcher()
-        );
+        $this->container->instance(EventDispatcherContract::class, new EventDispatcher());
     }
 
     /**
@@ -38,9 +35,7 @@ trait SetupCollectionExtenderTest
      */
     private function registerContainer()
     {
-        $this->container->instance(
-            ContainerContract::class, $this->container
-        );
+        $this->container->instance(ContainerContract::class, $this->container);
     }
 
     /**
@@ -50,8 +45,6 @@ trait SetupCollectionExtenderTest
      */
     private function createCollection()
     {
-        $this->collection = new CollectionMock(
-            new Connection('mongodb://xxx', 'xxx'), ['name' => 'xxx']
-        );
+        $this->collection = new DummyCollection();
     }
 }
