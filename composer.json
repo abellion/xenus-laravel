@@ -1,5 +1,7 @@
 {
     "name": "abellion/xenus-laravel",
+    "description": "Xenus integration for the Laravel and Lumen frameworks",
+    "keywords": ["mongodb", "laravel", "lumen", "odm", "xenus"],
     "type": "library",
     "license": "MIT",
     "require": {
