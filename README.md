@@ -9,7 +9,7 @@ This package integrates [Xenus](https://github.com/abellion/xenus) to the Larave
 - Out of the box **failed jobs** and **migrations** integration
 - Ready to work **event dispatcher**
 
-> Xenus is a simple and elegant ODM for MongoDB. Learn more : https://github.com/abellion/xenus
+> Xenus is a simple and elegant MongoDB ODM. Learn more : https://github.com/abellion/xenus
 
 ## Installation
 
