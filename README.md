@@ -13,7 +13,7 @@ This package integrates [Xenus](https://github.com/abellion/xenus) to the Larave
 
 ## Installation
 
-If you haven't already installed [Xenus](https://github.com/abellion/xenus), and thus satisfied its requirement to the `mondogd` extension, make sure to install the extension before requiring this package : https://www.php.net/manual/en/mongodb.installation.php
+If you haven't already installed [Xenus](https://github.com/abellion/xenus), and thus satisfied its requirement to the `mongodb` extension, make sure to install the extension before requiring this package : https://www.php.net/manual/en/mongodb.installation.php
 Once installed, require the package :
 
 ```bash
