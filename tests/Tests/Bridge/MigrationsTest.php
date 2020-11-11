@@ -195,4 +195,25 @@ class MigrationsTest extends \PHPUnit\Framework\TestCase
             'batch', $migration['batch']
         );
     }
+
+    public function test_repository_is_correctly_deleted()
+    {
+        $repository = new MigrationsRepository(
+            $collection = new MigrationsModel($this->connection)
+        );
+
+        $collection->insertOne([
+            'batch' => 0, 'migration' => 'A'
+        ]);
+
+        $this->assertNotEmpty(
+            iterator_to_array($this->connection->getDatabase()->listCollections())
+        );
+
+        $repository->deleteRepository();
+
+        $this->assertEmpty(
+            iterator_to_array($this->connection->getDatabase()->listCollections())
+        );
+    }
 }

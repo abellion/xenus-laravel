@@ -119,4 +119,14 @@ class Migrations implements MigrationRepositoryInterface
 
         return ($result) ? $result['batch'] + 1 : 1;
     }
+
+    /**
+     * Delete the migration repository data store
+     *
+     * @return void
+     */
+    public function deleteRepository()
+    {
+        $this->repository->drop();
+    }
 }
