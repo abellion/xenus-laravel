@@ -4,7 +4,7 @@
     </a>
 </p>
 
-This package integrates [Xenus](https://github.com/abellion/xenus) to the Laravel and Lumen frameworks (from version `5.8` up to the latest `7.0`) :
+This package integrates [Xenus](https://github.com/abellion/xenus) to the Laravel and Lumen frameworks (from version `5.8` up to the latest `8.0`) :
 
 - Out of the box **failed jobs** and **migrations** integration
 - Ready to work **event dispatcher**
