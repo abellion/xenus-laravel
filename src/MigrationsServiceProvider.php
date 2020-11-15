@@ -6,8 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Xenus\Connection;
 
+use Xenus\Laravel\Bridge\MigrationsRepository;
 use Xenus\Laravel\Models\Migrations as MigrationsModel;
-use Xenus\Laravel\Bridge\Migrations as MigrationsRepository;
 
 class MigrationsServiceProvider extends ServiceProvider
 {

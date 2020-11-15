@@ -3,7 +3,7 @@
 namespace Xenus\Laravel\Tests\Tests;
 
 use Xenus\Laravel\FailedJobsServiceProvider;
-use Xenus\Laravel\Bridge\FailedJobs as FailedJobsRepository;
+use Xenus\Laravel\Bridge\FailedJobsProvider;
 use Xenus\Laravel\Tests\Support\SetupFailedJobsProviderTest;
 
 class FailedJobsServiceProviderTest extends \PHPUnit\Framework\TestCase
@@ -15,7 +15,7 @@ class FailedJobsServiceProviderTest extends \PHPUnit\Framework\TestCase
         (new FailedJobsServiceProvider($this->container))->register();
 
         $this->assertInstanceOf(
-            FailedJobsRepository::class, $this->container->get('queue.failer')
+            FailedJobsProvider::class, $this->container->get('queue.failer')
         );
     }
 }

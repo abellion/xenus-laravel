@@ -3,7 +3,7 @@
 namespace Xenus\Laravel\Tests\Tests;
 
 use Xenus\Laravel\MigrationsServiceProvider;
-use Xenus\Laravel\Bridge\Migrations as MigrationsRepository;
+use Xenus\Laravel\Bridge\MigrationsRepository;
 use Xenus\Laravel\Tests\Support\SetupMigrationsProviderTest;
 
 class MigrationsServiceProviderTest extends \PHPUnit\Framework\TestCase

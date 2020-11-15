@@ -6,8 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Xenus\Connection;
 
+use Xenus\Laravel\Bridge\FailedJobsProvider;
 use Xenus\Laravel\Models\FailedJobs as FailedJobsModel;
-use Xenus\Laravel\Bridge\FailedJobs as FailedJobsRepository;
 
 class FailedJobsServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,7 @@ class FailedJobsServiceProvider extends ServiceProvider
         $collection = $this->app->config->get('queue.failed.collection', static::DEFAULT_COLLECTION_NAME);
 
         $this->app->extend('queue.failer', function () use ($collection) {
-            return new FailedJobsRepository(
+            return new FailedJobsProvider(
                 new FailedJobsModel($this->app->make(Connection::class), $collection)
             );
         });

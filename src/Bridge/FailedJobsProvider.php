@@ -8,7 +8,7 @@ use Illuminate\Queue\Failed\FailedJobProviderInterface;
 use Xenus\Laravel\Support\FailedJobFactory;
 use Xenus\Laravel\Models\FailedJobs as Repository;
 
-class FailedJobs implements FailedJobProviderInterface
+class FailedJobsProvider implements FailedJobProviderInterface
 {
     private $repository;
 

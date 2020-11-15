@@ -8,7 +8,7 @@ use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Xenus\Laravel\Support\MigrationsSetup;
 use Xenus\Laravel\Models\Migrations as Repository;
 
-class Migrations implements MigrationRepositoryInterface
+class MigrationsRepository implements MigrationRepositoryInterface
 {
     use MigrationsSetup;
 

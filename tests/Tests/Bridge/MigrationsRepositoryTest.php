@@ -2,12 +2,12 @@
 
 namespace Xenus\Laravel\Tests\Tests\Bridge;
 
+use Xenus\Laravel\Bridge\MigrationsRepository;
 use Xenus\Laravel\Models\Migrations as MigrationsModel;
-use Xenus\Laravel\Bridge\Migrations as MigrationsRepository;
 
 use Xenus\Laravel\Tests\Support\SetupMigrationsTest;
 
-class MigrationsTest extends \PHPUnit\Framework\TestCase
+class MigrationsRepositoryTest extends \PHPUnit\Framework\TestCase
 {
     use SetupMigrationsTest;
 
