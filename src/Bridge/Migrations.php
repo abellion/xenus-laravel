@@ -101,9 +101,9 @@ class Migrations implements MigrationRepositoryInterface
      */
     public function delete($migration)
     {
-        $this->repository->deleteOne(
-            $migration['_id']
-        );
+        $this->repository->deleteOne([
+            'migration' => $migration->migration
+        ]);
     }
 
     /**
