@@ -1,3 +1,7 @@
+# 0.2.1
+
+This releases fixes an issue with the `delete` method of the migrations repository.
+
 # 0.2
 
 This release makes the package compatible with Laravel V8+.
