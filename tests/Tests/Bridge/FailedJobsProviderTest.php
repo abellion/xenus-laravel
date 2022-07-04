@@ -35,7 +35,7 @@ class FailedJobsProviderTest extends \PHPUnit\Framework\TestCase
         );
 
         $collection->insertOne([
-            '_id' => $id = new ObjectID()
+            '_id' => $id = new ObjectID(), 'failed_at' => time()
         ]);
 
         $this->assertEquals(

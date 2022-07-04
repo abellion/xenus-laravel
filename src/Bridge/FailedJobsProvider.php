@@ -87,6 +87,8 @@ class FailedJobsProvider implements FailedJobProviderInterface
      */
     public function flush($hours = null)
     {
-        $this->repository->deleteMany([]);
+        $this->repository->deleteMany([
+            'failed_at' => ['$lte' => time() - ($hours * 3600)]
+        ]);
     }
 }
